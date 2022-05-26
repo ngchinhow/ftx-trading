@@ -19,10 +19,10 @@ loop = asyncio.new_event_loop()
 
 
 def run():
-    asyncio.run(analyze_trade_market('BTC/USD'))
+    analyze_trade_market('BTC/USD')
     print('exited out')
     print(os.getppid())
-    os.kill(os.getppid(), signal.CTRL_BREAK_EVENT)
+    os.kill(os.getpid(), signal.CTRL_BREAK_EVENT)
 
     # points = client.get_klines('BTC/USD', 3600)
     # spot_markets = ftxservice.get_spot_markets()

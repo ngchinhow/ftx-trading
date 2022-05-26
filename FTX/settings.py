@@ -37,12 +37,10 @@ ENV_ORACLE_USERNAME = env('oracle_username')
 ENV_ORACLE_PASSWORD = env('oracle_password')
 
 STOP_EVENT = threading.Event()
-WEBSOCKET_THREAD = threading.Thread()
 
 
-def stop_websocket(signal_num, _frame):
+def stop_websocket(_signal_num, _frame):
     STOP_EVENT.set()
-    WEBSOCKET_THREAD.join()
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -53,6 +51,7 @@ ALLOWED_HOSTS = []
 # Application definition
 INSTALLED_APPS = [
     'trading.apps.TradingConfig',
+    'datastructures.apps.DataStructuresConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
