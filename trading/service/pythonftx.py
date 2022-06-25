@@ -8,7 +8,8 @@ import talib
 import websockets
 from talib import MA_Type
 from trading.config.ftxconfig import client
-from trading.repo import spotrepo
+from trading.repo import djangorepo
+from trading.repo.djangorepo import bulk_create_spot_markets
 from trading.service import ftxservice
 from trading.models import SpotMarket
 
@@ -23,15 +24,6 @@ def run():
     print('exited out')
     print(os.getppid())
     os.kill(os.getpid(), signal.CTRL_BREAK_EVENT)
-
-    # points = client.get_klines('BTC/USD', 3600)
-    # spot_markets = ftxservice.get_spot_markets()
-    # for ftx_market in spot_markets:
-    #     db_market = SpotMarket.from_ftx(ftx_market)
-    #     print(db_market.name)
-    #     db_market.save()
-
-    # print(SpotMarket.objects.count())
 
     # close = numpy.array([point['close'] for point in points['result']])
     #

@@ -6,7 +6,6 @@ from trading.dto.ftxwsdto import WebsocketSubscribeDTO, WebsocketSubscribedDTO
 
 async def build_websocket(channel, market):
     subscribe_dto = WebsocketSubscribeDTO(channel, market)
-    print(ENV_FTX_WEBSOCKET_PING_INTERVAL)
     websocket = await websockets.connect(ENV_FTX_WEBSOCKET_URI, ping_interval=ENV_FTX_WEBSOCKET_PING_INTERVAL)
     await websocket.send(subscribe_dto.to_json())
     response = await websocket.recv()

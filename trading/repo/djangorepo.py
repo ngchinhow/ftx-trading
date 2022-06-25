@@ -1,4 +1,4 @@
-from trading.models import SpotMarket
+from trading.models import SpotMarket, CandleStick
 
 
 def get_spot_markets():
@@ -11,3 +11,7 @@ def bulk_create_spot_markets(markets):
 
 def bulk_update_spot_markets(markets) -> int:
     return SpotMarket.objects.bulk_update(markets)
+
+
+def bulk_create_candle_sticks(candle_sticks):
+    return CandleStick.objects.bulk_create(candle_sticks)
